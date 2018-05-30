@@ -1,0 +1,88 @@
+swagger: '2.0'
+info:
+  version: '0.0.0'
+  title: 'oneconference'
+  description: 'conferenceAPI'
+# Added by API Auto Mocking Plugin
+host: virtserver.swaggerhub.com
+basePath: /mawe/oneconference/0.0.0
+schemes:
+ - https
+paths: 
+  /events:
+    post:
+      summary: Posts an event
+      parameters: 
+        - in: body
+          name: event
+          schema:
+            $ref: "#/definitions/Event"
+      responses:
+        201:
+          description:  CREATED 
+          schema:
+            $ref: "#/definitions/Event"
+            
+    get:
+      summary: Gets all events
+      responses:
+        200:
+          description: OK
+          schema:
+            type: array
+            items:
+               $ref: "#/definitions/Event"
+               
+  /events/{id}:
+    get:
+      summary: Gets an event
+      parameters: 
+        - in: path
+          required: true
+          name: id
+          type: integer
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: "#/definitions/Event"
+            
+    put:
+      summary: Updates an event
+      parameters: 
+        - in: path
+          required: true
+          name: id
+          type: integer
+        - in: body
+          name: event
+          schema:
+            $ref: "#/definitions/Event"
+      responses:
+        200:
+          description: OK
+          
+    delete:
+      summary: Deletes an event
+      parameters: 
+        - in: path
+          required: true
+          name: id
+          type: integer
+      responses:
+        204:
+          description: NO CONTENT
+          
+definitions:
+  Event:
+    properties:
+      id:
+        type: integer
+      title:
+        type: string
+    required: 
+      - id
+      - title
+      
+  
+  
